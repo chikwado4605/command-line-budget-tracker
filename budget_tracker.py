@@ -40,6 +40,12 @@ def view_entries():
         print(f"Amount: {entry['amount']: .2f}")
         print(f"Category: {entry['category']}")
 
+def calculate_total():
+    total = 0
+    for entry in entries:
+        total += entry["amount"]
+    print(f"Total balance: {total: .2f}")    
+
 print("=== Budget Tracker ===")
 
 while True:
@@ -53,7 +59,9 @@ while True:
     if choice == "1":
         add_entry()
     elif choice == "2":
-        view_entries()    
+        view_entries()
+    elif choice == "3":
+        calculate_total()        
     elif choice == "4":
         print("Goodbye!")
         break
