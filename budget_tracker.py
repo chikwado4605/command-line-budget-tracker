@@ -1,8 +1,19 @@
 entries = []
 
+def get_amount():
+    while True:
+        try:
+            amount = float(input("Amount: "))
+            if amount <= 0:
+                print("Amount must be greater than zero.")
+                continue
+            return amount
+        except ValueError:
+            print("That is not a valid number. Please try again.")
+
 def add_entry():
     description = input("Description: ")
-    amount = float(input("Amount: "))
+    amount = get_amount()
     category = input("Category (income/expense): ").lower()
 
     if category == "expense":
@@ -17,6 +28,18 @@ def add_entry():
     entries.append(entry)
     print("Entry added.")
 
+def view_entries():
+    if not entries:
+        print("No entries recorded yet.")
+        return
+
+    print("\n=== All Entriesm ===")
+    for index, entry in enumerate(entries, start=1):
+        print(f"\nEntry {index}")
+        print(f"Description: {entry['description']}")
+        print(f"Amount: {entry['amount']: .2f}")
+        print(f"Category: {entry['category']}")
+
 print("=== Budget Tracker ===")
 
 while True:
@@ -29,6 +52,8 @@ while True:
 
     if choice == "1":
         add_entry()
+    elif choice == "2":
+        view_entries()    
     elif choice == "4":
         print("Goodbye!")
         break
