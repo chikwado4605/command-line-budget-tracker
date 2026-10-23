@@ -1,11 +1,19 @@
 entries = []
 
 def add_entry():
+    description = input("Description: ")
+    amount = float(input("Amount: "))
+    category = input("Category (income/expense): ").lower()
+
+    if category == "expense":
+        amount = -amount
+
     entry = {
-        "description": "Salary",
-        "amount": 150000,
-        "category": "income"
+        "description": description,
+        "amount": amount,
+        "category": category
     }
+
     entries.append(entry)
     print("Entry added.")
 
