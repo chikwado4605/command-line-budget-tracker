@@ -1,3 +1,14 @@
+entries = []
+
+def add_entry():
+    entry = {
+        "description": "Salary",
+        "amount": 150000,
+        "category": "income"
+    }
+    entries.append(entry)
+    print("Entry added.")
+
 print("=== Budget Tracker ===")
 
 while True:
@@ -8,6 +19,8 @@ while True:
 
     choice = input("Choose an option: ")
 
-    if choice == "4":
+    if choice == "1":
+        add_entry()
+    elif choice == "4":
         print("Goodbye!")
         break
